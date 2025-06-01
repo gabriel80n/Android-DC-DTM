@@ -1,0 +1,29 @@
+<resources>
+    <!-- Forgot Password Screen -->
+    <string name="forgot_password_title">Esqueceu a senha?</string>
+    <string name="forgot_password_subtitle">Enviamos um código de 6 dígitos para o seu email, caso ele esteja cadastrado.</string>
+    <string name="recovery_code_label">Código de recuperação</string>
+    <string name="new_password_label">Nova senha</string>
+    <string name="confirm_password_label">Confirmar nova senha</string>
+    <string name="confirm_new_password_button">Confirmar nova senha</string>
+    <string name="resend_code_button">Reenviar código</string>
+    <string name="back_to_login">Voltar para o login</string>
+    <string name="app_name">DC-DTM</string>
+
+    <!-- Login Screen -->
+    <string name="login_email_label">Email</string>
+    <string name="login_password_label">Senha</string>
+    <string name="login_forgot_password">Esqueceu a senha?</string>
+    <string name="login_button_text">Entrar</string>
+    <string name="login_logo_description">Logo do App</string>
+
+    <!-- Forgot Password Email Confirmation -->
+    <string name="forgot_password_confirm_email_title">Confirme seu email</string>
+    <string name="forgot_password_confirm_email_desc">Não se preocupe, caso o email fornecido esteja cadastrado, enviaremos um código de recuperação.</string>
+    <string name="forgot_password_confirm_email_input_label">Email</string>
+    <string name="forgot_password_confirm_email_send_button">Enviar código de recuperação</string>
+    <string name="forgot_password_confirm_email_back_to_login">Voltar para o login</string>
+    <string name="type_an_email">Por favor, preencha o e-mail.</string>
+    <string name="type_valid_email">Digite um e-mail válido.</string>
+</resources>
+
