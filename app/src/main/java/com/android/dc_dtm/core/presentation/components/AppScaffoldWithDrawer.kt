@@ -33,6 +33,7 @@ fun AppScaffoldWithDrawer(
     screenTitle: String,
     currentRoute: String,
     onLogout: () -> Unit,
+    topBarActions: @Composable (RowScope.() -> Unit)? = null, // <- Novo parâmetro
     content: @Composable (PaddingValues) -> Unit
 ) {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -128,10 +129,14 @@ fun AppScaffoldWithDrawer(
                         Box(
                             modifier = Modifier
                                 .fillMaxHeight()
-                                .padding(bottom = 8.dp), // ajuste esse padding para posicionar melhor
+                                .padding(bottom = 8.dp),
                             contentAlignment = Alignment.BottomStart
                         ) {
-                            Text(screenTitle)
+                            Text(
+                                text = screenTitle,
+                                style = MaterialTheme.typography.titleLarge,
+                                color = Color.White
+                            )
                         }
                     },
                     navigationIcon = {
@@ -145,6 +150,9 @@ fun AppScaffoldWithDrawer(
                             )
                         }
                     },
+                    actions = {
+                        topBarActions?.invoke(this) // <- Aqui insere ações customizadas, se houver
+                    },
                     colors = TopAppBarDefaults.topAppBarColors(
                         containerColor = LightGrayTopBar
                     ),
@@ -157,7 +165,7 @@ fun AppScaffoldWithDrawer(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(innerPadding)
+                    .padding(vertical = 16.dp)
                     .background(MaterialTheme.colorScheme.background)
             ) {
                 content(innerPadding)

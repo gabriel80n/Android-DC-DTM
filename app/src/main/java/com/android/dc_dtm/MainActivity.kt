@@ -23,12 +23,16 @@ import com.android.dc_dtm.core.api.RetrofitInstance
 
 import com.android.dc_dtm.core.presentation.SharedAuthViewModel
 import com.android.dc_dtm.features.dashboard.presentation.DashboardScreen
+import com.android.dc_dtm.features.exam.ExamScreen
 import com.android.dc_dtm.features.login.confirm_email.presentation.ConfirmEmailScreen
 import com.android.dc_dtm.features.login.forgot_password.presentation.ForgotPasswordScreen
 import com.android.dc_dtm.ui.theme.DCDTMTheme
 import features.login.domain.usecase.LoginUseCase
 import features.login.presentation.LoginViewModel
 import com.android.dc_dtm.features.login.login.presentation.LoginScreen
+import com.android.dc_dtm.features.patient.createPatient.presentation.CreatePatientScreen
+import com.android.dc_dtm.features.patient.patientDetails.presentation.PatientDetailScreen
+import com.android.dc_dtm.features.patient.patientList.presentation.PatientListScreen
 
 class MainActivity : ComponentActivity() {
     @SuppressLint("ViewModelConstructorInComposable")
@@ -87,6 +91,39 @@ class MainActivity : ComponentActivity() {
                                 navController = navController,
                                 sharedAuthViewModel = sharedAuthViewModel,
                                 snackbarHostState = snackbarHostState
+                            )
+                        }
+                        composable("patients") {
+                            PatientListScreen(
+                                navController = navController,
+                                snackbarHostState = snackbarHostState
+                            )
+                        }
+                        composable("doExam/{patientId}") { backStackEntry ->
+                            val patientId = backStackEntry.arguments?.getString("patientId")?.toIntOrNull()
+
+                            if (patientId != null) {
+                                ExamScreen(
+                                    navController = navController,
+                                    patientId = patientId
+                                )
+                            }
+                        }
+                        composable("patientDetails/{patientId}") { backStackEntry ->
+                            val patientId = backStackEntry.arguments?.getString("patientId")?.toIntOrNull()
+
+                            if (patientId != null) {
+                                PatientDetailScreen(
+                                    navController = navController,
+                                    patientId = patientId,
+                                    onBackClick = { navController.popBackStack() }
+                                )
+                            }
+                        }
+                        composable("createPatient") {
+                            CreatePatientScreen(
+                                navController = navController,
+                                onBackClick = { navController.popBackStack() }
                             )
                         }
 
